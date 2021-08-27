@@ -29,14 +29,12 @@
   border-color: #dcbaa9;
 }
 
-.buttons {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 55%;
+#output {
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
 }
 
-#clicky_1 {
+button {
   background-color: #a0e7e5;
   border-color: black;
   font-size: large;
@@ -45,10 +43,27 @@
   font-weight: bold;
   border: 3px solid;
 }
-#clicky_1:hover {
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
   border-color: #d2e5d0;
+  background-color: #d2e5d0;
 }
 
 body {
   background-color: #fbe7c6;
+}
+
+section {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  background-color: coral;
+  padding: 2rem;
+  border-radius: 12px;
 }
