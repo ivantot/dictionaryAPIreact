@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
-import ShowWords from "./components/ShowWords";
-import ShowWord from "./components/ShowWord";
+import ShowPhonetics from "./components/ShowPhonetics";
 
 import ReactDOM from "react-dom";
 
@@ -9,8 +8,6 @@ let url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 const fetchWord = async () => {
   const fieldWord = document.getElementById("word_input").value;
-  let place = document.getElementById("output");
-
   try {
     const response = await fetch(`${url}${fieldWord}`);
     const rawData = await response.json();
@@ -30,6 +27,22 @@ const doAssignmentA = async () => {
   }
 };
 
+const doAssignmentAB = async () => {
+  let place = document.getElementById("output");
+  let retVal = await fetchWord();
+  if (retVal.title == "No Definitions Found") {
+    return ReactDOM.render(<p>No Definitions Found</p>, place);
+  } else {
+    ReactDOM.render(
+      <p>
+        <span id="assB_word">{retVal[0].word}</span> -
+        <ShowPhonetics data={retVal[0]} />
+      </p>,
+      place
+    );
+  }
+};
+
 function App() {
   return (
     <div className="App">
@@ -41,7 +54,7 @@ function App() {
           Search for word (A)
         </button>
 
-        <button onClick={fetchWord} className="clicky_1">
+        <button onClick={doAssignmentAB} className="clicky_1">
           Search phonetics (B)
         </button>
         <button onClick={fetchWord} className="clicky_1">
