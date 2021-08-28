@@ -1,5 +1,5 @@
 import ShowWordDefinitions from "./ShowWordDefinitions";
-import "./showMeanings.css";
+import "./ShowMeanings.css";
 
 const ShowMeanings = (props) => {
   const prettyWord = props.meanings;
