@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
-import ShowPhonetics from "./components/ShowPhonetics";
-
 import ReactDOM from "react-dom";
+import ShowPhonetics from "./components/ShowPhonetics";
+import ShowPrettyWords from "./components/ShowPrettyWords";
 
 let url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
@@ -13,31 +13,52 @@ const fetchWord = async () => {
     const rawData = await response.json();
     return rawData;
   } catch (error) {
-    throw new Error("Something went badly wrong!");
+    return undefined;
   }
 };
 
 const doAssignmentA = async () => {
   let place = document.getElementById("output");
   let retVal = await fetchWord();
-  if (retVal.title == "No Definitions Found") {
-    return ReactDOM.render(<p>No Definitions Found</p>, place);
+  if (typeof retVal === "undefined") {
+    ReactDOM.render(<p>Enter a word to search</p>, place);
+  } else if (retVal.title === "No Definitions Found") {
+    ReactDOM.render(<p>No Definitions Found</p>, place);
   } else {
     ReactDOM.render(JSON.stringify(retVal), place);
   }
 };
 
-const doAssignmentAB = async () => {
+const doAssignmentB = async () => {
   let place = document.getElementById("output");
   let retVal = await fetchWord();
-  if (retVal.title == "No Definitions Found") {
-    return ReactDOM.render(<p>No Definitions Found</p>, place);
+  if (typeof retVal === "undefined") {
+    ReactDOM.render(<p>Enter a word to search</p>, place);
+  } else if (retVal.title === "No Definitions Found") {
+    ReactDOM.render(<p>No Definitions Found</p>, place);
   } else {
     ReactDOM.render(
-      <p>
-        <span id="assB_word">{retVal[0].word}</span> -
+      <div>
+        <span id="assB_word">{retVal[0].word}</span> —{" "}
         <ShowPhonetics data={retVal[0]} />
-      </p>,
+      </div>,
+      place
+    );
+  }
+};
+
+const doAssignmentC = async () => {
+  let place = document.getElementById("output");
+  let retVal = await fetchWord();
+  if (typeof retVal === "undefined") {
+    ReactDOM.render(<p>Enter a word to search</p>, place);
+  } else if (retVal.title === "No Definitions Found") {
+    ReactDOM.render(<p>No Definitions Found</p>, place);
+  } else {
+    ReactDOM.render(
+      <div>
+        <ShowPrettyWords data={retVal} />
+      </div>,
       place
     );
   }
@@ -46,6 +67,7 @@ const doAssignmentAB = async () => {
 function App() {
   return (
     <div className="App">
+      <h1 className="title">BRAINS DICTIONARY</h1>
       <section>
         <input type="text" id="word_input" defaultValue="duck" />
       </section>
@@ -53,11 +75,10 @@ function App() {
         <button onClick={doAssignmentA} className="clicky_1">
           Search for word (A)
         </button>
-
-        <button onClick={doAssignmentAB} className="clicky_1">
+        <button onClick={doAssignmentB} className="clicky_1">
           Search phonetics (B)
         </button>
-        <button onClick={fetchWord} className="clicky_1">
+        <button onClick={doAssignmentC} className="clicky_1">
           Show all definitions (C)
         </button>
       </section>

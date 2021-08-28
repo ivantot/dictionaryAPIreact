@@ -1,0 +1,12 @@
+.wordDefintions {
+  list-style: lower-alpha;
+}
+
+.example {
+  font-style: italic;
+}
+
+.hor_rule {
+  border-top: 1px dashed black;
+  border-bottom: none;
+}

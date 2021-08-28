@@ -1,9 +1,14 @@
+import "./ShowPhonetic.css";
+
 const ShowPhonetic = (props) => {
   const element = props.dataPhonetics;
+  if (element.audio === undefined) {
+    return <p className="phonetics">/{element.text}/</p>;
+  }
   return (
-    <div>
-      /{element.text}/ <a href={element.audio}>audio</a>.
-    </div>
+    <p className="phonetics">
+      /{element.text}/ <a href={element.audio}>audio</a>
+    </p>
   );
 };
 

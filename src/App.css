@@ -28,6 +28,12 @@
   font-weight: bold;
 }
 
+.title {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+}
+
 button {
   background-color: #a0e7e5;
   border-color: black;
