@@ -6,8 +6,8 @@ const ShowMeanings = (props) => {
   const meaning = prettyWord.meanings.map((el, index) => (
     <div>
       <li key={index} className="partOfSpeech">
-        <span className="word">{prettyWord.word}, </span>
-        {el.partOfSpeech}
+        <span className="meaning_word">{prettyWord.word}, </span>
+        <span>{el.partOfSpeech}</span>
       </li>
       <ol>
         <ShowWordDefinitions data={el.definitions} />

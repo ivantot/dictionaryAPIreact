@@ -82,7 +82,7 @@ function App() {
           Show all definitions (C)
         </button>
       </section>
-      <section>
+      <section className="section_output">
         <div id="output"></div>
       </section>
     </div>

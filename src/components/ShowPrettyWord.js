@@ -6,7 +6,7 @@ const ShowPrettyWord = (props) => {
   return (
     <div>
       <span className="word">{prettyWord.word}</span> —{" "}
-      <span>/{prettyWord.phonetic}/</span>
+      <span className="word_phonetic">/{prettyWord.phonetic}/</span>
       <br />
       <span>
         <u>Origin:</u> {prettyWord.origin}

@@ -20,6 +20,7 @@
 
 #output {
   text-align: left;
+  font-size: 14px;
   font-family: "Courier New", Courier, monospace;
   word-wrap: break-word;
 }
@@ -66,4 +67,8 @@ section {
   background-color: coral;
   padding: 2rem;
   border-radius: 12px;
+}
+
+.section_output {
+  max-width: 60rem;
 }
